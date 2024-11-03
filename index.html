@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partition Game</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Fredoka One', cursive;
+            background-color: #f0f8ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        #gameContainer {
+            background-color: #ffffff;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #4ecdc4;
+            font-size: 2.5em;
+            text-shadow: 2px 2px #ffd166;
+        }
+        .fun-input {
+            font-family: 'Fredoka One', cursive;
+            font-size: 18px;
+            padding: 10px;
+            border: 3px solid #4ecdc4;
+            border-radius: 10px;
+            background-color: #fff;
+            color: #333;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        .fun-button {
+            font-family: 'Fredoka One', cursive;
+            font-size: 18px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            background-color: #4ecdc4;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 10px;
+        }
+        .fun-button:hover {
+            background-color: #45b7aa;
+            transform: scale(1.05);
+        }
+        #numbersContainer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .number {
+            width: 40px;
+            height: 40px;
+            background-color: #4169E1;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 5px;
+            cursor: move;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+        #setsContainer {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .set {
+            border: 3px solid #ffd166;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            align-content: flex-start;
+        }
+        .slot {
+            width: 50px;
+            height: 50px;
+            border: 2px dashed #ccc;
+            margin: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .set-info {
+            width: 100%;
+            text-align: center;
+            font-weight: bold;
+            margin-top: 10px;
+            color: #333;
+        }
+        #resultMessage {
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div id="gameContainer">
+        <h1>Partition Game</h1>
+        <div>
+            <label for="nInput">Enter a number from 8 to 35:</label>
+            <input type="number" id="nInput" min="8" max="35" class="fun-input">
+            <button onclick="submitN()" class="fun-button">Start Game</button>
+        </div>
+        <div id="kOptionsContainer" style="display: none;">
+            <select id="kSelect" class="fun-input"></select>
+            <button onclick="submitK()" class="fun-button">Create Sets</button>
+        </div>
+        <div id="gameArea" style="display: none;">
+            <p>Target Sum for Each Set: <span id="targetSumDisplay"></span></p>
+            <div id="numbersContainer"></div>
+            <div id="setsContainer"></div>
+            <button id="checkSolutionBtn" onclick="checkSolution()" class="fun-button">Check Solution</button>
+            <p id="resultMessage"></p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
